@@ -49,7 +49,7 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
         if(col.tag=="Player" && isEnemyBullet){
-            GameController.DamagePlayer(1);
+            GameController.DamagePlayer();
             Destroy(gameObject);
         }
     }

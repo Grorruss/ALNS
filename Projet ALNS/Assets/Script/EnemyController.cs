@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour
         if(!cooldownAttack){
             switch(enemyType){
                 case (EnemyType.Melee):
-                    GameController.DamagePlayer(1);
+                    GameController.DamagePlayer();
                     StartCoroutine(Cooldown());
                 break;
                 case (EnemyType.Ranged):
