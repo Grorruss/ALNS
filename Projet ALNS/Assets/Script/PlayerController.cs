@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    Animator anim;
     public float speed;
     Rigidbody2D playerRigidbody;
     public Text collectedText;
@@ -16,23 +17,38 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+   
         fireDelay = GameController.FireRate;
         speed = GameController.MoveSpeed;
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        playerRigidbody.velocity = new Vector3(horizontal * speed, vertical * speed ,0);
+        bool isWalking = (Mathf.Abs(horizontal) + Mathf.Abs(vertical)) > 0;
+
+        anim.SetBool(("isWalking"), isWalking);
+
+        if (isWalking)
+        {
+            anim.SetFloat("x", horizontal);
+            anim.SetFloat("y", vertical);
+
+            
+            //transform.position += new Vector3(horizontal, vertical, 0).normalized * Time.deltaTime;
+        }
+        playerRigidbody.velocity = new Vector3(horizontal * speed, vertical * speed, 0);
+
         collectedText.text = "Item Collected : " + collectedAmount;
 
-        float shootHorizontal = Input.GetAxis("ShootHorizontal");
-        float shootVertical = Input.GetAxis("ShootVertical");
+        float shootHorizontal = Input.GetAxisRaw("ShootHorizontal");
+        float shootVertical = Input.GetAxisRaw("ShootVertical");
 
         if((shootHorizontal != 0 || shootVertical != 0) && (Time.time>lastBullet+ fireDelay)){
             Shoot(shootHorizontal, shootVertical);
