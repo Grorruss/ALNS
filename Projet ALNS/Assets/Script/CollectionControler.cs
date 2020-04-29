@@ -15,7 +15,7 @@ public class CollectionControler : MonoBehaviour
 {
 
     public Item item;
-    public float healthChange;
+    public int healthChange;
     public float moveSpeedChange;
     public float attackSpeedChange;
     public float bulletSizeChange;

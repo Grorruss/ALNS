@@ -6,19 +6,24 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    private static float health = 6;
+    private static int health = 3;
     private static int maxHealth = 6;
+    private static int numOfHearts = 3;
     private static float moveSpeed = 5f;
     private static int attackDamage = 1;
     private static float fireRate = 0.5f;
     private static float bulletSize = 0.5f;
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     private bool bootCollected = false;
     private bool screwCollected = false;
 
     public List<string> collectedName = new List<string>();
 
-    public static float Health { get => health; set => health = value; }
+    public static int Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public static int AttackDamage { get => attackDamage; set => attackDamage = value; }
@@ -28,7 +33,7 @@ public class GameController : MonoBehaviour
     public Text healthText;
     public Text moveSpeedText;
     public Text attackDamageText;
-    public Text fireRateText;
+    public Text fireRateText;    
 
     private void Awake()
     {
@@ -45,6 +50,26 @@ public class GameController : MonoBehaviour
         moveSpeedText.text = "Move Speed: " + moveSpeed;
         attackDamageText.text = "Attack Damage: " + attackDamage;
         fireRateText.text = "Fire Rate: " + fireRate;
+
+        if (health > numOfHearts) {
+            numOfHearts = health;
+        }
+
+        for (int i = 0; i < hearts.Length; i++) {
+            if (i < health) {
+                hearts[i].sprite = fullHeart;
+            }
+            else {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts) {
+                hearts[i].enabled = true;
+            }
+            else {
+                hearts[i].enabled = false;
+            }
+        }
     }
 
     public static void DamagePlayer()
@@ -57,7 +82,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    public static void HealPlayer(float healAmount)
+    public static void HealPlayer(int healAmount)
     {
         health = Mathf.Min(maxHealth, health + healAmount);
     }
