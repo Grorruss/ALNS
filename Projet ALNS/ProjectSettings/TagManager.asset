@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - RangedEnemy
+  - Bullet
+  - room
   layers:
   - Default
   - TransparentFX
@@ -48,4 +50,7 @@ TagManager:
     locked: 0
   - name: Door
     uniqueID: 4233673999
+    locked: 0
+  - name: Wall
+    uniqueID: 176480031
     locked: 0
