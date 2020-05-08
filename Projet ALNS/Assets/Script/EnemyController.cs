@@ -18,6 +18,7 @@ public enum EnemyType
 
 public class EnemyController : MonoBehaviour
 {
+    //Animator anim;
     GameObject player;
     public EnemyState currState = EnemyState.Wander;
     public EnemyType enemyType;
@@ -32,13 +33,17 @@ public class EnemyController : MonoBehaviour
     private bool dead = false;
     private bool cooldownAttack = false;
 
+    //private float oldPosition = 0.0f
+
     private Vector3 randomDir;
     public GameObject bulletPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
+        //anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        //oldPosition = transform.position.x;
     }
 
     // Update is called once per frame
@@ -63,9 +68,16 @@ public class EnemyController : MonoBehaviour
         }else if(!isPlayerInRange(range) && currState != EnemyState.Die){
             currState = EnemyState.Wander;
         }
-        if(Vector3.Distance(transform.position,player.transform.position)<=attackRange){
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange) {
             currState = EnemyState.Attack;
         }
+            /*if (transform.position.x > oldPosition)
+            {
+                anim.SetFloat("x")
+            }*/
+        
+
+        
     }
 
     private bool isPlayerInRange(float Range){

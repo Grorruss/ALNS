@@ -41,10 +41,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "Health: " + health;
-        moveSpeedText.text = "Move Speed: " + moveSpeed;
-        attackDamageText.text = "Attack Damage: " + attackDamage;
-        fireRateText.text = "Fire Rate: " + fireRate;
+        healthText.text = "" + health;
+        moveSpeedText.text = "" + moveSpeed;
+        attackDamageText.text = "" + attackDamage;
+        fireRateText.text = "" + fireRate;
     }
 
     public static void DamagePlayer()
