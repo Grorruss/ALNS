@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     private static float health = 6;
     private static int maxHealth = 6;
     private static float moveSpeed = 5f;
-    private static int attackDamage = 1;
+    private static float attackDamage = 1;
     private static float fireRate = 0.5f;
     private static float bulletSize = 0.5f;
 
@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     public static float Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
-    public static int AttackDamage { get => attackDamage; set => attackDamage = value; }
+    public static float AttackDamage { get => attackDamage; set => attackDamage = value; }
     public static float FireRate { get => fireRate; set => fireRate = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
 
@@ -42,15 +42,41 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "Health: " + health;
-        moveSpeedText.text = "Move Speed: " + moveSpeed;
-        attackDamageText.text = "Attack Damage: " + attackDamage;
-        fireRateText.text = "Fire Rate: " + fireRate;
+        /*healthText.text = "" + health;
+        moveSpeedText.text = "" + moveSpeed;
+        attackDamageText.text = "" + attackDamage;
+        fireRateText.text = "" + fireRate;*/
+
+        if (health > numOfHearts)
+        {
+            numOfHearts = health;
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
     }
 
-    public static void DamagePlayer()
+    public static void DamagePlayer(int damage)
     {
-        health -= attackDamage;
+        health -= damage;
         if (Health <= 0)
         {
             KillPlayer();
@@ -73,15 +99,23 @@ public class GameController : MonoBehaviour
         fireRate -= rate;
     }
 
+    public static void FireDamageChange(float dmg)
+    {
+        attackDamage += dmg;
+    }
+
     public static void BulletSizeChange(float size)
     {
         bulletSize += size;
     }
 
-    public void UpdateCollectedItems(CollectionControler item){
+    public void UpdateCollectedItems(CollectionControler item)
+    {
         collectedName.Add(item.item.name);
-        foreach(string i in collectedName){
-            switch(i){
+        foreach (string i in collectedName)
+        {
+            switch (i)
+            {
                 case "Boot":
                     bootCollected = true;
                     break;
@@ -91,7 +125,8 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if(bootCollected == true && screwCollected == true){
+        if (bootCollected == true && screwCollected == true)
+        {
             FireRateChange(0.25f);
         }
     }
