@@ -4,5 +4,41 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menus/StartMenu.unity
+    guid: 7b7f1805dd342214e9ca07e5e0eb3d7e
+  - enabled: 1
+    path: Assets/Scenes/DungeonRoom/BasementMain.unity
+    guid: 6a7559e39b1f0da44b4ab2d90205bc8b
+  - enabled: 1
+    path: Assets/Scenes/DungeonRoom/BasementStart.unity
+    guid: 542b619eafd57184282061854d07296c
+  - enabled: 1
+    path: Assets/Scenes/DungeonRoom/BasementEnd.unity
+    guid: a5166afe1f66753469536661126a9b30
+  - enabled: 1
+    path: Assets/Scenes/DungeonRoom/BasementEmpty.unity
+    guid: 3bb60ede7bcccdc41b0c29240887f0fb
+  - enabled: 1
+    path: Assets/Scenes/Death/DeathScene.unity
+    guid: 2315cf4c2d9999e4394cf7cdc9dc6323
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarBasic.unity
+    guid: 2ecb914ab04ecc64ebe1d874b4966722
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarEmpty.unity
+    guid: b245683bc02c6604fa0af622c958c518
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarEnd.unity
+    guid: 6a444f2e89435fd408f573b21609c7cf
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarMain.unity
+    guid: 17cbc36a87fec554081b642081d62e98
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarObject.unity
+    guid: 4d1a1503d079a1b4b8ee53003079bc2b
+  - enabled: 1
+    path: Assets/Scenes/Cellar/CellarStart.unity
+    guid: 81f51c556c855a443a33ee88c77081c3
   m_configObjects: {}
