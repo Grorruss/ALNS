@@ -16,7 +16,7 @@ public class RoomController : MonoBehaviour
 
     public static RoomController instance;
 
-    public string currentWorldName = "Cellar";
+    public string currentWorldName = "Forest";
 
     RoomInfo currentLoadRoomData;
 

@@ -8,6 +8,8 @@ TagManager:
   - RangedEnemy
   - Bullet
   - room
+  - ForestBoss
+  - CellarBoss
   layers:
   - Default
   - TransparentFX

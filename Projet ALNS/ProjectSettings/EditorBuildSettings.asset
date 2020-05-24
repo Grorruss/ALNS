@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/StartMenu.unity
     guid: 7b7f1805dd342214e9ca07e5e0eb3d7e
   - enabled: 1
-    path: Assets/Scenes/DungeonRoom/BasementMain.unity
+    path: Assets/Scenes/Main/Main.unity
     guid: 6a7559e39b1f0da44b4ab2d90205bc8b
-  - enabled: 1
-    path: Assets/Scenes/DungeonRoom/BasementStart.unity
+  - enabled: 0
+    path: Assets/Scenes/test/BasementStart.unity
     guid: 542b619eafd57184282061854d07296c
-  - enabled: 1
-    path: Assets/Scenes/DungeonRoom/BasementEnd.unity
+  - enabled: 0
+    path: Assets/Scenes/test/BasementEnd.unity
     guid: a5166afe1f66753469536661126a9b30
-  - enabled: 1
-    path: Assets/Scenes/DungeonRoom/BasementEmpty.unity
+  - enabled: 0
+    path: Assets/Scenes/test/BasementEmpty.unity
     guid: 3bb60ede7bcccdc41b0c29240887f0fb
   - enabled: 1
     path: Assets/Scenes/Death/DeathScene.unity
@@ -41,4 +41,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cellar/CellarStart.unity
     guid: 81f51c556c855a443a33ee88c77081c3
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestBasic.unity
+    guid: 79b8cc7ddf07ae9489f47148530843eb
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestEmpty.unity
+    guid: 3f8403d10fc4c3c49ad6314baef4c42a
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestEnd.unity
+    guid: 307a9cf3bf930354e86c63bc73968b6a
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestMain.unity
+    guid: dd083bda328091849a7fe556d33cd176
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestObject.unity
+    guid: 9599960d36a233e428fd2fd989e1fee3
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestStart.unity
+    guid: 58e942aab2c86d84c95ecbe7f9bf7c77
   m_configObjects: {}

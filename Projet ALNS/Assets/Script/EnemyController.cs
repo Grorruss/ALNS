@@ -14,7 +14,9 @@ public enum EnemyState
 public enum EnemyType
 {
     Melee,
-    Ranged
+    Ranged,
+    ForestBoss,
+    CellarBoss
 };
 
 public class EnemyController : MonoBehaviour
@@ -28,6 +30,8 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public float bulletSpeed;
     public float coolDown;
+    public float health;
+    public int damage;
     private bool chooseDir = false;
     private bool dead = false;
     private bool coolDownAttack = false;
@@ -124,7 +128,7 @@ public class EnemyController : MonoBehaviour
             switch (enemyType)
             {
                 case (EnemyType.Melee):
-                    GameController.DamagePlayer(1);
+                    GameController.DamagePlayer(damage);
                     StartCoroutine(CoolDown());
                     break;
                 case (EnemyType.Ranged):
@@ -132,10 +136,33 @@ public class EnemyController : MonoBehaviour
                     bullet.GetComponent<BulletController>().GetPlayer(player.transform);
                     bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
                     bullet.GetComponent<BulletController>().isEnemyBullet = true;
+                    bullet.GetComponent<BulletController>().damage = damage;
+                    StartCoroutine(CoolDown());
+                    break;
+                case (EnemyType.ForestBoss):
+                    GameObject arrow = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+                    arrow.GetComponent<BulletController>().GetPlayer(player.transform);
+                    arrow.AddComponent<Rigidbody2D>().gravityScale = 0;
+                    arrow.GetComponent<BulletController>().isEnemyBullet = true;
+                    arrow.GetComponent<BulletController>().damage = damage;
+                    StartCoroutine(CoolDown());
+                    break;
+                case (EnemyType.CellarBoss):
+                    GameController.DamagePlayer(damage);
                     StartCoroutine(CoolDown());
                     break;
             }
         }
+    }
+    public void DamageBoss(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Death();
+        }
+
     }
 
     private IEnumerator CoolDown()

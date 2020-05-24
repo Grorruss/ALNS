@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class teleportplayer : MonoBehaviour
 {
 
-    List<string> listLevels = new List<string>(new string[] { "Cellar", "Basement" });
+    List<string> listLevels = new List<string>(new string[] { "Forest", "Cellar" });
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")

@@ -1,32 +1,42 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    private static float health = 6;
+    private static int health = 3;
     private static int maxHealth = 6;
+    private static int numOfHearts = 3;
     private static float moveSpeed = 5f;
-    private static float attackDamage = 1;
     private static float fireRate = 0.5f;
+    private static float attackDamage = 1;
     private static float bulletSize = 0.5f;
+
+    private static bool invincible = false;
+    private float invincibilityTime = 600;
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     private bool bootCollected = false;
     private bool screwCollected = false;
 
     public List<string> collectedName = new List<string>();
 
-    public static float Health { get => health; set => health = value; }
+    public static int Health { get => health; set => health = value; }
     public static int MaxHealth { get => maxHealth; set => maxHealth = value; }
     public static float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
-    public static float AttackDamage { get => attackDamage; set => attackDamage = value; }
     public static float FireRate { get => fireRate; set => fireRate = value; }
+    public static float AttackDamage { get => attackDamage; set => attackDamage = value; }
     public static float BulletSize { get => bulletSize; set => bulletSize = value; }
 
-    public Text healthText;
+
     public Text moveSpeedText;
     public Text attackDamageText;
     public Text fireRateText;
@@ -42,10 +52,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*healthText.text = "" + health;
+       
         moveSpeedText.text = "" + moveSpeed;
+        fireRateText.text = "" + fireRate;
         attackDamageText.text = "" + attackDamage;
-        fireRateText.text = "" + fireRate;*/
 
         if (health > numOfHearts)
         {
@@ -74,9 +84,24 @@ public class GameController : MonoBehaviour
         }
     }
 
+    IEnumerator Invulnerability()
+    {
+        invincible = true;
+        yield return new WaitForSeconds(invincibilityTime);
+        invincible = false;
+    }
+
     public static void DamagePlayer(int damage)
     {
-        health -= damage;
+        if (!invincible)
+        {
+            instance.StartCoroutine(instance.Invulnerability());
+        }
+        else { health -= damage; }
+
+        
+      
+
         if (Health <= 0)
         {
             KillPlayer();
@@ -84,7 +109,9 @@ public class GameController : MonoBehaviour
 
     }
 
-    public static void HealPlayer(float healAmount)
+
+
+    public static void HealPlayer(int healAmount)
     {
         health = Mathf.Min(maxHealth, health + healAmount);
     }
@@ -125,9 +152,14 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (bootCollected == true && screwCollected == true)
+        if (screwCollected == true)
         {
-            FireRateChange(0.25f);
+            FireRateChange(0.10f);
+        }
+
+        if (bootCollected == true)
+        {
+            MoveSpeedChange(0.10f);
         }
     }
 

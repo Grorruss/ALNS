@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+
 
 public class BulletController : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class BulletController : MonoBehaviour
     private Vector2 lastPos;
     private Vector2 curPos;
     private Vector2 playerPos;
+    public int damage;
    
     // Start is called before the first frame update
     void Start()
@@ -48,8 +51,15 @@ public class BulletController : MonoBehaviour
             col.gameObject.GetComponent<EnemyController>().Death();
             Destroy(gameObject);
         }
-        if(col.tag=="Player" && isEnemyBullet){
-            GameController.DamagePlayer(1);
+        if (col.tag == "ForestBoss" && !isEnemyBullet)
+        {
+
+            col.gameObject.GetComponent<EnemyController>().DamageBoss(damage);
+            Destroy(gameObject);
+        }
+        if (col.tag == "Player" && isEnemyBullet){
+            GameController.DamagePlayer(damage);
+            UnityEngine.Debug.Log(damage);
             Destroy(gameObject);
         }
     }

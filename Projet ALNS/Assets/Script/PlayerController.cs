@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public float speedBullet;
     public float fireDelay;
+    public int damage;
     private float lastBullet;
 
     // Start is called before the first frame update
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void Shoot(float x, float y){
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation) as GameObject;
         bullet.AddComponent<Rigidbody2D>().gravityScale = 0;
+        bullet.GetComponent<BulletController>().damage = damage;
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector3(
             (x < 0) ? Mathf.Floor(x) * speedBullet : Mathf.Ceil(x) * speedBullet,
             (y < 0) ? Mathf.Floor(y) * speedBullet : Mathf.Ceil(y) * speedBullet,
