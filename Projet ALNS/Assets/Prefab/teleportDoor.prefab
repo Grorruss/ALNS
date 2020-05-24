@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d4cd81200016d418115baecbf0c724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whereToTeleport: Cellar
 --- !u!50 &-884695595551047883
 Rigidbody2D:
   serializedVersion: 4

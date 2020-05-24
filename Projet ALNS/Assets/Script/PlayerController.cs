@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float fireDelay;
     public int damage;
     private float lastBullet;
+    public static bool testShoot = false;
+    public AudioSource shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
+        if (testShoot == true)
+        {
+            shootSound.Play();
+            testShoot = false;
+        }
+
         fireDelay = GameController.FireRate;
         speed = GameController.MoveSpeed;
 
@@ -67,5 +74,7 @@ public class PlayerController : MonoBehaviour
             (y < 0) ? Mathf.Floor(y) * speedBullet : Mathf.Ceil(y) * speedBullet,
             0
         );
+        testShoot = true;
+
     }
 }

@@ -17,8 +17,11 @@ public class GameController : MonoBehaviour
     private static float attackDamage = 1;
     private static float bulletSize = 0.5f;
 
-    private static bool invincible = false;
-    private float invincibilityTime = 600;
+    public static bool testHurt = false;
+    public AudioSource hurtSound;
+    public AudioSource objectSound;
+
+
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -82,23 +85,22 @@ public class GameController : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
+        if (testHurt == true)
+        {
+            hurtSound.Play();
+            testHurt = false;
+        }
     }
 
-    IEnumerator Invulnerability()
-    {
-        invincible = true;
-        yield return new WaitForSeconds(invincibilityTime);
-        invincible = false;
-    }
+
 
     public static void DamagePlayer(int damage)
     {
-        if (!invincible)
-        {
-            instance.StartCoroutine(instance.Invulnerability());
-        }
-        else { health -= damage; }
 
+        testHurt = true;
+        health -= damage;
+  
         
       
 
@@ -150,6 +152,7 @@ public class GameController : MonoBehaviour
                     screwCollected = true;
                     break;
             }
+            objectSound.Play();
         }
 
         if (screwCollected == true)

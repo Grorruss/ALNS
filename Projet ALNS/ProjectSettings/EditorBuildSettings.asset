@@ -5,30 +5,36 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menus/StartMenu.unity
-    guid: 7b7f1805dd342214e9ca07e5e0eb3d7e
+    guid: ce038caf02c9cc3498be4e2a7a251c69
   - enabled: 1
     path: Assets/Scenes/Main/Main.unity
     guid: 6a7559e39b1f0da44b4ab2d90205bc8b
-  - enabled: 0
-    path: Assets/Scenes/test/BasementStart.unity
-    guid: 542b619eafd57184282061854d07296c
-  - enabled: 0
-    path: Assets/Scenes/test/BasementEnd.unity
-    guid: a5166afe1f66753469536661126a9b30
-  - enabled: 0
-    path: Assets/Scenes/test/BasementEmpty.unity
-    guid: 3bb60ede7bcccdc41b0c29240887f0fb
   - enabled: 1
     path: Assets/Scenes/Death/DeathScene.unity
     guid: 2315cf4c2d9999e4394cf7cdc9dc6323
   - enabled: 1
+    path: Assets/Scenes/Forest/ForestBasic.unity
+    guid: 79b8cc7ddf07ae9489f47148530843eb
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestEnd.unity
+    guid: 307a9cf3bf930354e86c63bc73968b6a
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestMain.unity
+    guid: dd083bda328091849a7fe556d33cd176
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestObject.unity
+    guid: 9599960d36a233e428fd2fd989e1fee3
+  - enabled: 1
+    path: Assets/Scenes/Forest/ForestStart.unity
+    guid: 58e942aab2c86d84c95ecbe7f9bf7c77
+  - enabled: 1
     path: Assets/Scenes/Cellar/CellarBasic.unity
     guid: 2ecb914ab04ecc64ebe1d874b4966722
-  - enabled: 1
-    path: Assets/Scenes/Cellar/CellarEmpty.unity
-    guid: b245683bc02c6604fa0af622c958c518
   - enabled: 1
     path: Assets/Scenes/Cellar/CellarEnd.unity
     guid: 6a444f2e89435fd408f573b21609c7cf
@@ -42,21 +48,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cellar/CellarStart.unity
     guid: 81f51c556c855a443a33ee88c77081c3
   - enabled: 1
-    path: Assets/Scenes/Forest/ForestBasic.unity
-    guid: 79b8cc7ddf07ae9489f47148530843eb
+    path: Assets/Scenes/LastEnd/EndMain.unity
+    guid: a7682fdb71ef4844db7297d4232b899a
   - enabled: 1
-    path: Assets/Scenes/Forest/ForestEmpty.unity
-    guid: 3f8403d10fc4c3c49ad6314baef4c42a
-  - enabled: 1
-    path: Assets/Scenes/Forest/ForestEnd.unity
-    guid: 307a9cf3bf930354e86c63bc73968b6a
-  - enabled: 1
-    path: Assets/Scenes/Forest/ForestMain.unity
-    guid: dd083bda328091849a7fe556d33cd176
-  - enabled: 1
-    path: Assets/Scenes/Forest/ForestObject.unity
-    guid: 9599960d36a233e428fd2fd989e1fee3
-  - enabled: 1
-    path: Assets/Scenes/Forest/ForestStart.unity
-    guid: 58e942aab2c86d84c95ecbe7f9bf7c77
+    path: Assets/Scenes/LastEnd/EndScreen.unity
+    guid: c496a788cb068494593d5ab06007f59b
   m_configObjects: {}
